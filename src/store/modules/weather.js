@@ -24,7 +24,7 @@ const getters = {
 };
 
 const actions = {
-   /* async fetchWeather({commit}){
+  /* async fetchWeather({commit}){
         //const response = await 
 
         commit('setWeather', response);
@@ -32,7 +32,7 @@ const actions = {
 };
 
 const mutations = {
-    setWeather: (state, weather) => (state.weather = weather)
+  setWeather: (state, weather) => (state.weather = weather),
 };
 
 export default {
