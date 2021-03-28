@@ -17,10 +17,12 @@ const state = {
       weather_info: "Okey",
     },
   ],
+  rec_cities: ["Kyiv", "London", "Barcelona"],
 };
 
 const getters = {
   allWeather: (state) => state.weather,
+  allCities: (state) => state.rec_cities,
 };
 
 const actions = {
@@ -29,10 +31,20 @@ const actions = {
 
         commit('setWeather', response);
     }*/
+  /*async fetchRecCities({commit}, state){
+      let result = [];
+      for(i=0; i<state.rec_cities.length; i++){
+        const response = await ;
+        result.push(response);
+      }
+
+      commit('SetWeather', result);
+    }*/
 };
 
 const mutations = {
   setWeather: (state, weather) => (state.weather = weather),
+  setCities: (state, rec_cities) => (state.rec_cities = rec_cities),
 };
 
 export default {

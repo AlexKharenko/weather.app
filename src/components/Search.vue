@@ -1,5 +1,5 @@
 <template>
-  <form v-on:submit.prevent="Ok">
+  <form v-on:submit.prevent="searchCity">
     {{ search }}
     <input type="search" v-model="search" placeholder="Search for a city" />
     <button type="submit">Submit</button>
@@ -13,6 +13,11 @@ export default {
     return {
       search: "",
     };
+  },
+  methods: {
+    searchCity() {
+      console.log("Hello");
+    },
   },
 };
 </script>

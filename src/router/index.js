@@ -24,6 +24,14 @@ const routes = [
         /* webpackChunkName: "weather-container" */ "../views/Weather.vue"
       ),
   },
+  {
+    path: "/weather/:id",
+    name: "City",
+    component: () =>
+      import(
+        /* webpackChunkName: "weather-container" */ "../components/City.vue"
+      ),
+  },
 ];
 
 const router = createRouter({

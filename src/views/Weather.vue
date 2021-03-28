@@ -1,6 +1,6 @@
 <template>
   <div class="weather-container">
-    <Search/>
+    <Search />
     <WeatherContainer />
   </div>
 </template>
