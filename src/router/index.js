@@ -21,7 +21,8 @@ const routes = [
     name: "Weather",
     component: () =>
       import(
-        /* webpackChunkName: "weather-container" */ "../views/Weather.vue"
+        /* webpackChunkName: "weather-container"  "../views/Weather.vue"*/
+        /*webpackChunkName: "weather-container"*/ "../components/WeatherContainer.vue"
       ),
   },
   {
@@ -29,7 +30,7 @@ const routes = [
     name: "City",
     component: () =>
       import(
-        /* webpackChunkName: "weather-container" */ "../components/City.vue"
+        /*webpackChunkName: "weather-container"*/ "../components/City.vue"
       ),
   },
 ];

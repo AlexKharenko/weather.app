@@ -7,6 +7,8 @@
 </template>
 
 <script>
+import { mapActions, mapGetters } from "vuex";
+
 export default {
   name: "Search",
   data() {
@@ -15,8 +17,10 @@ export default {
     };
   },
   methods: {
+    ...mapActions(["setCity"]),
+    ...mapGetters(["getCity"]),
     searchCity() {
-      console.log("Hello");
+      this.setCity(this.search);
     },
   },
 };
