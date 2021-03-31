@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from "vuex";
+import { mapGetters } from "vuex";
 import WeatherItem from "@/components/WeatherItem.vue";
 
 export default {
@@ -19,11 +19,7 @@ export default {
   components: {
     WeatherItem,
   },
-  methods: mapActions(["fetchRecCities"]),
   computed: mapGetters(["allWeather"]),
-  created() {
-    this.fetchRecCities();
-  },
 };
 </script>
 

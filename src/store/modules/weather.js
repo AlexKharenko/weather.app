@@ -15,7 +15,7 @@ const actions = {
   async fetchWeatherByCity({ commit, state }) {
     //lat=33.441792&lon=-94.037689&exclude=hourly,daily&appid={API key}
     const res = await fetch(
-      `http://api.openweathermap.org/data/2.5/forecast?q=${state.city}&appid=${state.appId}`
+      `http://api.openweathermap.org/data/2.5/weather?q=${state.city}&appid=${state.appId}` //forecast
     ).then((response) => response.json());
     console.log(res);
 

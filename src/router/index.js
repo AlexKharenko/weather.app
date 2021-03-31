@@ -20,18 +20,13 @@ const routes = [
     path: "/weather",
     name: "Weather",
     component: () =>
-      import(
-        /* webpackChunkName: "weather-container"  "../views/Weather.vue"*/
-        /*webpackChunkName: "weather-container"*/ "../components/WeatherContainer.vue"
-      ),
+      import(/* webpackChunkName: "weather-container"*/ "../views/Weather.vue"),
   },
   {
     path: "/weather/:id",
     name: "City",
     component: () =>
-      import(
-        /*webpackChunkName: "weather-container"*/ "../components/City.vue"
-      ),
+      import(/*webpackChunkName: "weather-container"*/ "../views/City.vue"),
   },
 ];
 
