@@ -6,7 +6,7 @@
     </h1>
 
     <div class="city-temperature">
-      <h1>{{ weather.main.temp }}</h1>
+      <h1>{{ KelvinToCelcius(weather.main.temp) }}</h1>
       <sup>°C</sup>
     </div>
 
@@ -20,10 +20,15 @@
 </template>
 
 <script>
+import { KelvinToCelcius } from "../functions/formating";
+
 export default {
   name: "WeatherItem",
   props: {
     weather: Object,
+  },
+  methods: {
+    KelvinToCelcius,
   },
 };
 </script>

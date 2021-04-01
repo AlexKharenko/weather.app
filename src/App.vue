@@ -1,10 +1,12 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link> |
-    <router-link to="/weather">Weather</router-link>
+  <div class="wrapper">
+    <div id="nav">
+      <router-link to="/">Home</router-link> |
+      <router-link to="/about">About</router-link> |
+      <router-link to="/weather">Weather</router-link>
+    </div>
+    <router-view></router-view>
   </div>
-  <router-view></router-view>
 </template>
 
 <style>

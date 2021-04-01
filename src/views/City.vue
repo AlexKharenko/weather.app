@@ -1,26 +1,36 @@
 <template>
-  <div class="wrapper">
+  <div class="city-forecast">
     <router-link to="/weather">Back</router-link><br />
-    <!--<router-link to="/weather/703448">Kyiv</router-link><br />
-    <span>{{ allWeather.city.name }}</span>-->
+    {{ CurrentWeather.name }}<br />
+    <div class="temp" v-for="forecast in Forecast" :key="forecast.id">
+      {{ convertTimestamp(forecast.dt) }}
+    </div>
   </div>
 </template>
 
 <script>
 import { mapGetters, mapActions } from "vuex";
 //import Table from "@/components/Table.vue";
+import { convertTimestamp } from "../functions/formating";
 
 export default {
   name: "City",
   //components: {
   //  Table,
   //},
-  computed: mapGetters(["allWeather"]),
+  computed: mapGetters(["Forecast", "CurrentWeather"]),
   methods: {
-    ...mapActions(["fetchWeatherById"]),
+    ...mapActions(["fetchForecastById"]),
+    convertTimestamp,
   },
   created() {
-    this.fetchWeatherById(this.$route.params.id);
+    this.fetchForecastById(this.$route.params.id);
+  },
+  beforeRouteUpdate(to, from, next) {
+    if (to.name == "City") {
+      this.fetchForecastById(to.params.id);
+      next();
+    }
   },
 };
 </script>
