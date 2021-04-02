@@ -1,24 +1,38 @@
+var months = [
+  "Jan",
+  "Feb",
+  "Mar",
+  "Apr",
+  "May",
+  "Jun",
+  "Jul",
+  "Aug",
+  "Sep",
+  "Oct",
+  "Nov",
+  "Dec",
+];
+
+var day_of_week = [
+  "Sunday",
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
+];
+
 const convertTimestamp = (timestamp) => {
   const ts = new Date(timestamp * 1000);
-  var months = [
-    "Jan",
-    "Feb",
-    "Mar",
-    "Apr",
-    "May",
-    "Jun",
-    "Jul",
-    "Aug",
-    "Sep",
-    "Oct",
-    "Nov",
-    "Dec",
-  ];
-  var year = ts.getFullYear();
-  var month = months[ts.getMonth()];
-  var date = ts.getDate();
-
-  var day = date + " " + month + " " + year;
+  const day = {
+    year: ts.getFullYear(),
+    month: months[ts.getMonth()],
+    date: ts.getDate(),
+    week_day: day_of_week[ts.getDay()],
+    hours: ts.getHours(),
+    minutes: ts.getMinutes(),
+  };
   return day;
 };
 

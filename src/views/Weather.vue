@@ -1,6 +1,6 @@
 <template>
   <div class="weather-container">
-    <!--<Search />-->
+    <Search />
     <WeatherContainer />
   </div>
 </template>
@@ -8,13 +8,13 @@
 <script>
 // @ is an alias to /src
 import WeatherContainer from "@/components/WeatherContainer.vue";
-//import Search from "@/components/Search.vue";
+import Search from "@/components/Search.vue";
 import { mapActions } from "vuex";
 
 export default {
   name: "Weather",
   components: {
-    //Search,
+    Search,
     WeatherContainer,
   },
   methods: mapActions(["fetchRecCities"]),

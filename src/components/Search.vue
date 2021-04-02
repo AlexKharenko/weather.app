@@ -17,10 +17,11 @@ export default {
     };
   },
   methods: {
-    ...mapActions(["setCity"]),
+    ...mapActions(["setCity", "fetchWeatherByCity"]),
     ...mapGetters(["getCity"]),
     searchCity() {
       this.setCity(this.search);
+      this.fetchWeatherByCity();
     },
   },
 };

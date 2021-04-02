@@ -3,7 +3,7 @@
     <router-link
       v-for="weather in allWeather"
       :key="weather.id"
-      :to="`/weather/${weather.id}`"
+      :to="`/city/${weather.id}`"
     >
       <WeatherItem :weather="weather" />
     </router-link>

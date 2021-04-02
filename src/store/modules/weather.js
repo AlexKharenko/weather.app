@@ -1,7 +1,7 @@
 const state = {
   appId: "91703bcfce9c478af2e68120c793bbc7",
   weather: [],
-  city: "Kyiv",
+  city: "",
   rec_cities: ["Kyiv", "London", "Barcelona"],
 };
 
@@ -13,13 +13,12 @@ const getters = {
 
 const actions = {
   async fetchWeatherByCity({ commit, state }) {
-    //lat=33.441792&lon=-94.037689&exclude=hourly,daily&appid={API key}
     const res = await fetch(
-      `http://api.openweathermap.org/data/2.5/weather?q=${state.city}&appid=${state.appId}` //forecast
+      `http://api.openweathermap.org/data/2.5/weather?q=${state.city}&appid=${state.appId}`
     ).then((response) => response.json());
     console.log(res);
 
-    await commit("setWeather", res);
+    await commit("setWeather", [res]);
   },
   async fetchRecCities({ commit, state }) {
     let result = [];
