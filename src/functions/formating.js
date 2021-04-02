@@ -23,6 +23,11 @@ var day_of_week = [
   "Saturday",
 ];
 
+const degToCompass = (num) => {
+  const val = Math.floor(num / 45 + 0.5);
+  const arr = ["N", "NE", "E", "SE", "S", "SW", "W", "NW"];
+  return arr[val % 8];
+};
 const convertTimestamp = (timestamp) => {
   const ts = new Date(timestamp * 1000);
   const day = {
@@ -40,4 +45,4 @@ const KelvinToCelcius = (temp) => {
   return Math.round(temp - 273.15).toFixed(1);
 };
 
-export { convertTimestamp, KelvinToCelcius };
+export { convertTimestamp, KelvinToCelcius, degToCompass };
