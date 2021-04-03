@@ -8,10 +8,12 @@
         class="day"
         :class="{ active: active == forecast.dt }"
       >
-        <h1>
-          {{ convertTimestamp(forecast.dt).week_day }}
-        </h1>
-        <p class="date">{{ dateNoYear(forecast.dt) }}</p>
+        <div class="date-info">
+          <h1>
+            {{ convertTimestamp(forecast.dt).week_day }}
+          </h1>
+          <p class="date">{{ dateNoYear(forecast.dt) }}</p>
+        </div>
         <img
           :src="`http://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png`"
         />
@@ -80,12 +82,7 @@ export default {
     flex-direction: row;
     justify-content: center;
     .day {
-      /*h1 {
-      font-family: monospace;
-      width: 3ch;
-      overflow: hidden;
-      white-space: nowrap;
-    }*/
+      transition: 0.5s;
       width: 200px;
       padding: 10px;
       border-right: solid 1px grey;
@@ -94,8 +91,9 @@ export default {
         color: grey;
       }
       .temp-min-max {
+        text-align: left;
         margin-top: 20px;
-        font-weight: 600;
+        font-weight: 500;
         color: rgb(95, 93, 93);
       }
     }
@@ -118,6 +116,69 @@ export default {
     max-width: 1600px;
     padding: 50px 0;
     transform: translateX(-50%);
+  }
+
+  @media (max-width: 1210px) {
+    .day {
+      text-align: left;
+      h1 {
+        font-family: monospace;
+        width: 3ch;
+        overflow: hidden;
+        white-space: nowrap;
+      }
+    }
+  }
+}
+
+@media (max-width: 1010px) {
+  .weather-container {
+    display: flex;
+    flex-direction: row;
+    .days-container {
+      display: flex;
+      flex-direction: column;
+      .day {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        border-right: none;
+        border-bottom: solid 1px grey;
+        img {
+          display: none;
+        }
+
+        .temp-min-max {
+          margin: 0 15px;
+        }
+      }
+      @media (max-width: 720px) {
+        .day {
+          text-align: center;
+          width: unset;
+          .temp-min-max {
+            display: none;
+            margin: 0;
+          }
+        }
+      }
+      .day.active {
+        box-shadow: -8px 0 5px 5px rgba($color: #918b8b, $alpha: 0.5);
+      }
+    }
+    .additional-info {
+      position: unset;
+      box-shadow: 8px 0 5px 5px rgba($color: #918b8b, $alpha: 0.5);
+      flex-direction: column;
+      max-height: none;
+      padding: 40px 50px;
+      transform: none;
+    }
+    @media (max-width: 580px) {
+      .additional-info {
+        padding: 0;
+      }
+    }
   }
 }
 </style>

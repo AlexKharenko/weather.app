@@ -23,11 +23,21 @@ var day_of_week = [
   "Saturday",
 ];
 
+const directions = [
+  "North",
+  "North-East",
+  "East",
+  "South-East",
+  "South",
+  "South-West",
+  "West",
+  "North-West",
+];
+
 const degToCompass = (num) => {
-  const val = Math.floor(num / 45 + 0.5);
-  const arr = ["N", "NE", "E", "SE", "S", "SW", "W", "NW"];
-  return arr[val % 8];
+  return directions[Math.floor(num / 45 + 0.5) % 8];
 };
+
 const convertTimestamp = (timestamp) => {
   const ts = new Date(timestamp * 1000);
   const day = {

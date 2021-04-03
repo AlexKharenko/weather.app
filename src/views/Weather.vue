@@ -1,5 +1,6 @@
 <template>
-  <div class="weather-container">
+  <div class="home-weather-container">
+    <h1 class="app-name">Weather.app</h1>
     <Search />
     <WeatherContainer />
   </div>
@@ -23,3 +24,14 @@ export default {
   },
 };
 </script>
+
+<style lang="scss">
+.home-weather-container {
+  position: relative;
+  text-align: center;
+  .app-name {
+    font-size: 40px;
+    margin: 30px;
+  }
+}
+</style>

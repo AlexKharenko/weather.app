@@ -2,7 +2,16 @@ const state = {
   appId: "91703bcfce9c478af2e68120c793bbc7",
   weather: [],
   city: "",
-  rec_cities: ["Kyiv", "London", "Barcelona"],
+  rec_cities: [
+    "Kyiv",
+    "London",
+    "Barcelona",
+    "Washington",
+    "Moscow",
+    "Paris",
+    "Odesa",
+    "Berlin",
+  ],
 };
 
 const getters = {

@@ -63,7 +63,16 @@ export default {
   .sun-info-text {
     margin-left: 20px;
     line-height: 49px;
-    font-weight: 600;
+    font-weight: 500;
+  }
+  @media (max-width: 580px) {
+    img {
+      width: 50px;
+      height: 50px;
+    }
+    .sun-info-text {
+      line-height: 30px;
+    }
   }
 }
 
@@ -71,7 +80,7 @@ export default {
   position: relative;
   line-height: 1.6em;
   padding: 5px 10px;
-  font-weight: 600;
+  font-weight: 500;
   div {
     border: solid 1px gray;
     border-top: none;

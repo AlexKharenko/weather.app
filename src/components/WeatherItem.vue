@@ -1,14 +1,14 @@
 <template>
   <div class="city">
-    <h1 class="city-name">
+    <h2 class="city-name">
       <span>{{ weather.name }}</span>
       <sup>{{ weather.sys.country }}</sup>
-    </h1>
+    </h2>
 
-    <div class="city-temperature">
-      <h1>{{ KelvinToCelcius(weather.main.temp) }}</h1>
+    <h1 class="city-temperature">
+      <span>{{ KelvinToCelcius(weather.main.temp) }}</span>
       <sup>°C</sup>
-    </div>
+    </h1>
 
     <div class="city-weather">
       <img
@@ -33,4 +33,31 @@ export default {
 };
 </script>
 
-<style></style>
+<style lang="scss">
+.city {
+  position: relative;
+  text-align: left;
+  margin: 30px 30px;
+  border: solid 2px gray;
+  border-radius: 10%;
+  width: 200px;
+  height: 250px;
+  padding: 10px;
+  overflow: hidden;
+
+  .city-temperature {
+    margin-top: 10px;
+    //font-size: 22px;
+    font-weight: 500;
+  }
+  .city-weather {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    img {
+      height: 100px;
+      width: 100px;
+    }
+  }
+}
+</style>

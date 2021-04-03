@@ -23,4 +23,10 @@ export default {
 };
 </script>
 
-<style></style>
+<style lang="scss">
+.city-container {
+  display: flex;
+  justify-content: center;
+  flex-flow: row wrap;
+}
+</style>
