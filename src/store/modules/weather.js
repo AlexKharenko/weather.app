@@ -1,38 +1,54 @@
 const state = {
-  weather: [
-    {
-      id: 1,
-      city: "Kyiv",
-      country: "UA",
-      temperature: "8",
-      url: "../assets/logo.png",
-      weather_info: "Okey",
-    },
-    {
-      id: 2,
-      city: "London",
-      country: "UK",
-      temperature: "4",
-      url: "../assets/logo.png",
-      weather_info: "Okey",
-    },
+  appId: "91703bcfce9c478af2e68120c793bbc7",
+  weather: [],
+  city: "",
+  rec_cities: [
+    "Kyiv",
+    "London",
+    "Barcelona",
+    "Washington",
+    "Moscow",
+    "Paris",
+    "Odesa",
+    "Berlin",
   ],
 };
 
 const getters = {
+  getCity: (state) => state.city,
   allWeather: (state) => state.weather,
+  allCities: (state) => state.rec_cities,
 };
 
 const actions = {
-   /* async fetchWeather({commit}){
-        //const response = await 
+  async fetchWeatherByCity({ commit, state }) {
+    const res = await fetch(
+      `http://api.openweathermap.org/data/2.5/weather?q=${state.city}&appid=${state.appId}`
+    ).then((response) => response.json());
+    console.log(res);
 
-        commit('setWeather', response);
-    }*/
+    await commit("setWeather", [res]);
+  },
+  async fetchRecCities({ commit, state }) {
+    let result = [];
+    for (let i = 0; i < state.rec_cities.length; i++) {
+      const res = await fetch(
+        `https://api.openweathermap.org/data/2.5/weather?q=${state.rec_cities[i]}&appid=${state.appId}`
+      ).then((response) => response.json());
+      result.push(res);
+    }
+    console.log(result);
+    await commit("setWeather", result);
+  },
+  setCity({ commit }, city) {
+    commit("setCity", city);
+  },
 };
 
 const mutations = {
-    setWeather: (state, weather) => (state.weather = weather)
+  setCity: (state, city) => (state.city = city),
+  setWeather: (state, weather) => (state.weather = weather),
+  setCities: (state, rec_cities) => (state.rec_cities = rec_cities),
 };
 
 export default {
