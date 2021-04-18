@@ -25,8 +25,8 @@ export default {
 
 <style lang="scss">
 .city-container {
-  display: flex;
-  justify-content: center;
-  flex-flow: row wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 200px);
+  grid-column-gap: 20px;
 }
 </style>

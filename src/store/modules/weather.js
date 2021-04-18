@@ -21,15 +21,18 @@ const getters = {
 };
 
 const actions = {
-  async fetchWeatherByCity({ commit, state }) {
+  async fetchWeatherByCity({ commit, state, dispatch }) {
+    dispatch("loading/changeReady", false, { root: true });
     const res = await fetch(
-      `http://api.openweathermap.org/data/2.5/weather?q=${state.city}&appid=${state.appId}`
+      `https://api.openweathermap.org/data/2.5/weather?q=${state.city}&appid=${state.appId}`
     ).then((response) => response.json());
     console.log(res);
 
     await commit("setWeather", [res]);
+    dispatch("loading/changeReady", true, { root: true });
   },
-  async fetchRecCities({ commit, state }) {
+  async fetchRecCities({ commit, state, dispatch }) {
+    dispatch("loading/changeReady", false, { root: true });
     let result = [];
     for (let i = 0; i < state.rec_cities.length; i++) {
       const res = await fetch(
@@ -39,6 +42,7 @@ const actions = {
     }
     console.log(result);
     await commit("setWeather", result);
+    dispatch("loading/changeReady", true, { root: true });
   },
   setCity({ commit }, city) {
     commit("setCity", city);

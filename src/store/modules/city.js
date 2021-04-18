@@ -16,18 +16,20 @@ const getters = {
 };
 
 const actions = {
-  async fetchForecastById({ commit, state }, id) {
+  async fetchForecastById({ commit, state, dispatch }, id) {
+    dispatch("loading/changeReady", false, { root: true });
     let res = await getWeatherById(state.appId, id);
     const cordinates = res.coord;
     commit("setName", res.name);
     commit("setSys", res.sys);
     res = await fetch(
-      `http://api.openweathermap.org/data/2.5/onecall?lat=${cordinates.lat}&lon=${cordinates.lon}&exclude=current,minutely,hourly,alerts&appid=${state.appId}`
+      `https://api.openweathermap.org/data/2.5/onecall?lat=${cordinates.lat}&lon=${cordinates.lon}&exclude=current,minutely,hourly,alerts&appid=${state.appId}`
     ).then((response) => response.json());
     console.log(res);
 
     commit("setDefDate", res.daily[0].dt);
     commit("setForecast", res.daily);
+    dispatch("loading/changeReady", true, { root: true });
   },
 };
 
